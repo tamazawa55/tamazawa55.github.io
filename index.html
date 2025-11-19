@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tamazawa Links</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: url("bg-valorant.png") center/cover no-repeat fixed;
+      color: #fff;
+      cursor: pointer; /* optional: biar kelihatan bisa diklik */
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(40px);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .orb-1 {
+      width: 230px; height: 230px;
+      background: #f97316;
+      top: -60px; left: -60px;
+      animation: float1 12s infinite alternate ease-in-out;
+    }
+
+    .orb-2 {
+      width: 200px; height: 200px;
+      background: #3b82f6;
+      bottom: -50px; right: -50px;
+      animation: float2 15s infinite alternate ease-in-out;
+    }
+
+    @keyframes float1 { from {transform:translate(0,0);} to {transform:translate(40px,60px);} }
+    @keyframes float2 { from {transform:translate(0,0);} to {transform:translate(-50px,-40px);} }
+
+    .wrapper {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 430px;
+      padding: 24px 16px;
+    }
+
+    .card {
+      background: rgba(20,20,20,0.55);
+      backdrop-filter: blur(15px);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.23);
+    }
+
+    .avatar {
+      width: 70px; height: 70px;
+      border-radius: 60px;
+      margin: 0 auto 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      background: linear-gradient(135deg,#f97316,#ec4899,#6366f1);
+      font-weight: 800;
+      color: #111;
+      box-shadow: 0 0 12px rgba(255,255,255,0.6);
+    }
+
+    .name { text-align: center; font-size: 1.3rem; font-weight: 700; }
+    .bio { text-align: center; margin-top: 8px; opacity: .9; }
+
+    .links { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+
+    .link-btn {
+      background: rgba(255,255,255,0.8);
+      color: #111;
+      padding: 12px;
+      border-radius: 999px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.15s;
+    }
+    .link-btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
+
+    .game-strip {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .game-card {
+      background: rgba(0,0,0,0.45);
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.35);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: block;
+      position: relative;
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- 🎵 Musik -->
+  <audio id="bg-music" autoplay loop muted preload="auto">
+    <source src="last-shot.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    const audio = document.getElementById("bg-music");
+
+    // Set volume kecil 20%
+    audio.volume = 0.2;
+
+    // Coba autoplay (mute) saat halaman load
+    window.addEventListener("load", () => {
+      audio.play().catch(() => {
+        // kalau gagal, nanti diaktifkan setelah klik
+      });
+    });
+
+    // Setelah user pertama kali klik di halaman, unmute & pastikan play
+    function enableSoundOnce() {
+      audio.muted = false;
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      }
+      // Hapus listener biar cuma jalan sekali
+      document.removeEventListener("click", enableSoundOnce);
+    }
+
+    document.addEventListener("click", enableSoundOnce);
+  </script>
+
+  <div class="wrapper">
+    <div class="card">
+
+      <div class="avatar">T</div>
+      <div class="name">Tamazawa</div>
+      <div class="bio">Streamer Roblox | Valorant | Content Creator</div>
+
+      <div class="game-strip">
+        <a href="https://www.roblox.com/users/6048191003/profile" class="game-card" target="_blank">
+          ROBLOX Profile →
+        </a>
+
+        <a href="https://tracker.gg/valorant/profile/riot/ironmeng%23zzz" class="game-card" target="_blank">
+          Valorant Stats →
+        </a>
+      </div>
+
+      <div class="links">
+        <a href="https://saweria.co/tamazawa" class="link-btn" target="_blank">🔥 Saweria</a>
+        <a href="https://sociabuzz.com/tamazawa/donate" class="link-btn" target="_blank">⭐ Sociabuzz</a>
+        <a href="https://www.youtube.com/@tamazawaa" class="link-btn" target="_blank">▶ YouTube</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
