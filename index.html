@@ -12,7 +12,7 @@
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
       <text y='.9em' font-size='90'>🔥</text>
     </svg>">
-
+  
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -25,7 +25,7 @@
       overflow: hidden;
       background: url("bg-valorant.png") center/cover no-repeat fixed;
       color: #fff;
-      cursor: pointer; /* optional: biar kelihatan bisa diklik */
+      cursor: pointer;
     }
 
     .orb {
@@ -85,10 +85,24 @@
       box-shadow: 0 0 12px rgba(255,255,255,0.6);
     }
 
-    .name { text-align: center; font-size: 1.3rem; font-weight: 700; }
-    .bio { text-align: center; margin-top: 8px; opacity: .9; }
+    .name {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
 
-    .links { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+    .bio {
+      text-align: center;
+      margin-top: 8px;
+      opacity: .9;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
 
     .link-btn {
       background: rgba(255,255,255,0.8);
@@ -100,7 +114,11 @@
       font-weight: 700;
       transition: 0.15s;
     }
-    .link-btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
+
+    .link-btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.2);
+    }
 
     .game-strip {
       margin-top: 18px;
@@ -129,31 +147,22 @@
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
 
-  <!-- 🎵 Musik -->
+  <!-- Musik -->
   <audio id="bg-music" autoplay loop muted preload="auto">
     <source src="last-shot.mp3" type="audio/mp3">
   </audio>
 
   <script>
     const audio = document.getElementById("bg-music");
-
-    // Set volume kecil 20%
     audio.volume = 0.2;
 
-    // Coba autoplay (mute) saat halaman load
     window.addEventListener("load", () => {
-      audio.play().catch(() => {
-        // kalau gagal, nanti diaktifkan setelah klik
-      });
+      audio.play().catch(() => {});
     });
 
-    // Setelah user pertama kali klik di halaman, unmute & pastikan play
     function enableSoundOnce() {
       audio.muted = false;
-      if (audio.paused) {
-        audio.play().catch(() => {});
-      }
-      // Hapus listener biar cuma jalan sekali
+      if (audio.paused) audio.play().catch(() => {});
       document.removeEventListener("click", enableSoundOnce);
     }
 
