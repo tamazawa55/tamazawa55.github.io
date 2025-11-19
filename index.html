@@ -6,10 +6,12 @@
 
   <title>Tamazawa</title>
 
-  <!-- favicon dari link gambar -->
-  <link rel="icon" 
-        href="https://gamepedia.cursecdn.com/minecraft_gamepedia/a/a7/Heart.svg?version=dac1a46352ab4c25ad78a3cef0ceea86"
-        type="image/svg+xml">
+  <!-- favicon -->
+  <link
+    rel="icon"
+    href="https://gamepedia.cursecdn.com/minecraft_gamepedia/a/a7/Heart.svg?version=dac1a46352ab4c25ad78a3cef0ceea86"
+    type="image/svg+xml"
+  >
 
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,14 +19,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: "Poppins", sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -32,63 +30,50 @@
       overflow: hidden;
       background: url("bg-valorant.png") center/cover no-repeat fixed;
       color: #fff;
+      cursor: pointer;
     }
 
-    /* blur orbs */
     .orb {
       position: fixed;
       border-radius: 999px;
       filter: blur(45px);
-      opacity: 0.5;
+      opacity: 0.6;
       pointer-events: none;
       z-index: 1;
     }
 
     .orb-1 {
-      width: 260px;
-      height: 260px;
+      width: 260px; height: 260px;
       background: #f97316;
-      top: -80px;
-      left: -80px;
+      top: -80px; left: -80px;
       animation: float1 14s infinite alternate ease-in-out;
     }
 
     .orb-2 {
-      width: 230px;
-      height: 230px;
-      background: #6366f1;
-      bottom: -80px;
-      right: -80px;
+      width: 230px; height: 230px;
+      background: #3b82f6;
+      bottom: -80px; right: -80px;
       animation: float2 16s infinite alternate ease-in-out;
     }
 
-    @keyframes float1 {
-      from { transform: translate(0, 0); }
-      to   { transform: translate(40px, 70px); }
-    }
-
-    @keyframes float2 {
-      from { transform: translate(0, 0); }
-      to   { transform: translate(-60px, -40px); }
-    }
+    @keyframes float1 { from { transform: translate(0,0);} to {transform: translate(40px,70px);} }
+    @keyframes float2 { from { transform: translate(0,0);} to {transform: translate(-60px,-40px);} }
 
     .wrapper {
       position: relative;
       z-index: 5;
       width: 100%;
-      max-width: 480px;
+      max-width: 460px;
       padding: 24px 16px;
     }
 
     .card {
-      background: radial-gradient(circle at top, rgba(255,255,255,0.18), rgba(15,15,15,0.85));
-      backdrop-filter: blur(22px);
+      background: radial-gradient(circle at top, rgba(255,255,255,0.18), rgba(10,10,10,0.92));
+      backdrop-filter: blur(20px);
       border-radius: 26px;
-      padding: 26px 22px 26px;
-      box-shadow:
-        0 18px 45px rgba(0,0,0,0.8),
-        0 0 0 1px rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
+      padding: 26px 22px 24px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.9);
+      border: 1px solid rgba(255,255,255,0.14);
       position: relative;
     }
 
@@ -96,198 +81,154 @@
       content: "";
       position: absolute;
       inset: 0;
-      border-radius: 26px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent 40%, rgba(255,255,255,0.03));
-      opacity: 0.7;
-      pointer-events: none;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255,255,255,0.16), transparent 40%, rgba(255,255,255,0.04));
       mix-blend-mode: screen;
+      opacity: 0.7;
     }
 
-    .card-inner {
-      position: relative;
-      z-index: 2;
-    }
+    .card-inner { position: relative; z-index: 2; }
 
-    /* avatar */
     .avatar {
-      width: 88px;
-      height: 88px;
-      border-radius: 999px;
+      width: 86px; height: 86px; border-radius: 999px;
       margin: 0 auto 14px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: flex; justify-content: center; align-items: center;
       background: radial-gradient(circle at top, #ffffff, #f97316);
-      padding: 3px;
       box-shadow:
-        0 0 0 3px rgba(0,0,0,0.8),
-        0 14px 30px rgba(0,0,0,0.9);
+        0 0 0 3px rgba(0,0,0,0.85),
+        0 14px 32px rgba(0,0,0,0.95);
+      padding: 3px;
       overflow: hidden;
     }
 
     .avatar img {
-      width: 100%;
-      height: 100%;
-      border-radius: 999px;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%; border-radius: 999px; object-fit: cover;
     }
 
-    .name {
-      text-align: center;
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-
-    .tagline {
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 6px;
-      opacity: 0.8;
-    }
+    .name { text-align: center; font-size: 1.4rem; font-weight: 700; }
+    .bio { text-align: center; margin-top: 6px; opacity: .85; font-size: .9rem; }
 
     .divider {
       margin: 18px auto 16px;
-      width: 68%;
-      height: 1px;
-      background: radial-gradient(circle, rgba(255,255,255,0.7), transparent);
-      opacity: 0.7;
+      width: 70%; height: 1px;
+      background: radial-gradient(circle, rgba(255,255,255,0.75), transparent);
     }
 
-    /* top buttons (game profiles) */
     .game-strip {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-bottom: 18px;
     }
 
-    .pill-btn {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 10px 14px;
+    /* ANIMASI NEON UNTUK TOMBOL */
+    @keyframes neonPulse {
+      0% {
+        box-shadow:
+          0 0 6px rgba(248, 113, 113, 0.35),
+          0 0 14px rgba(59, 130, 246, 0.28),
+          0 0 0 0 rgba(251, 191, 36, 0.0);
+        border-color: rgba(248, 250, 252, 0.25);
+      }
+      50% {
+        box-shadow:
+          0 0 12px rgba(251, 146, 60, 0.7),
+          0 0 26px rgba(59, 130, 246, 0.6),
+          0 0 40px 2px rgba(251, 191, 36, 0.45);
+        border-color: rgba(255, 255, 255, 0.7);
+      }
+      100% {
+        box-shadow:
+          0 0 8px rgba(248, 113, 113, 0.45),
+          0 0 18px rgba(59, 130, 246, 0.45),
+          0 0 26px 1px rgba(251, 191, 36, 0.35);
+        border-color: rgba(209, 213, 219, 0.7);
+      }
+    }
+
+    .game-card {
+      background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.25), rgba(15,15,15,0.9));
+      padding: 11px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(248, 250, 252, 0.3);
       color: #f9fafb;
-      font-size: 0.8rem;
-      font-weight: 500;
       text-decoration: none;
-      cursor: pointer;
-      overflow: hidden;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-      box-shadow: 0 0 0 rgba(0,0,0,0);
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      transition: transform 0.16s ease, opacity 0.16s ease;
+      animation: neonPulse 3s ease-in-out infinite alternate;
     }
 
-    .pill-btn span.label {
-      white-space: nowrap;
+    .game-card::after {
+      content: "↗";
+      font-size: 0.85rem;
+      opacity: 0.8;
     }
 
-    .pill-btn:hover {
-      transform: translateY(-1px);
-      background: rgba(15,15,15,0.9);
-      border-color: rgba(255,255,255,0.5);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.8);
+    .game-card:hover {
+      transform: translateY(-3px) scale(1.02);
+      opacity: 1;
+      animation-duration: 1.6s;
     }
 
-    .pill-btn:active {
-      transform: translateY(0);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-    }
-
-    .pill-btn.primary {
-      background: linear-gradient(135deg, #111827, #020617);
-    }
-
-    /* main link buttons */
     .links {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-top: 6px;
+      margin-top: 22px;
     }
 
     .link-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.35), #ffffff);
+      color: #111;
       padding: 12px 16px;
       border-radius: 999px;
-      background: linear-gradient(135deg, rgba(243,244,246,0.98), rgba(229,231,235,0.98));
-      border: 1px solid rgba(0,0,0,0.16);
       text-decoration: none;
-      color: #111827;
       font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      box-shadow: 0 8px 18px rgba(15,23,42,0.65);
-      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid rgba(15, 23, 42, 0.4);
+      animation: neonPulse 3.2s ease-in-out infinite alternate;
+      transition: transform 0.16s ease, filter 0.16s ease;
     }
+
+    .link-left { display: flex; align-items: center; gap: 10px; }
+
+    .link-icon { font-size: 1.1rem; }
+    .link-arrow { font-size: .85rem; opacity: .8; }
 
     .link-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(15,23,42,0.9);
-      background: linear-gradient(135deg, #ffffff, #e5e7eb);
+      transform: translateY(-3px) scale(1.02);
+      filter: brightness(1.05);
+      animation-duration: 1.7s;
     }
 
-    .link-btn:active {
-      transform: translateY(0);
-      box-shadow: 0 6px 12px rgba(15,23,42,0.7);
-    }
-
-    .link-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .link-emoji {
-      font-size: 1.1rem;
-    }
-
-    .link-arrow {
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-
-    /* footer / small note */
     .footer-note {
-      margin-top: 18px;
-      font-size: 0.7rem;
+      margin-top: 20px;
+      font-size: 0.75rem;
+      opacity: .7;
       text-align: center;
-      opacity: 0.6;
     }
+    .footer-note span { font-weight: 600; color: #fff; opacity: .9; }
 
-    .footer-note span {
-      opacity: 0.9;
-      font-weight: 500;
-    }
-
-    /* responsive */
     @media (max-width: 480px) {
-      .wrapper {
-        padding-inline: 14px;
-      }
-      .card {
-        padding-inline: 18px;
-      }
-      .game-strip {
-        grid-template-columns: 1fr;
-      }
+      .wrapper { padding-inline: 14px; }
+      .card { padding-inline: 18px; }
+      .game-strip { grid-template-columns: 1fr; }
     }
   </style>
 </head>
+
 <body>
 
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
 
-  <!-- Musik -->
+  <!-- Musik (TIDAK DIUBAH) -->
   <audio id="bg-music" autoplay loop muted preload="auto">
     <source src="last-shot.mp3" type="audio/mp3">
   </audio>
@@ -295,70 +236,60 @@
   <script>
     const audio = document.getElementById("bg-music");
     audio.volume = 0.2;
-
     window.addEventListener("load", () => {
       audio.play().catch(() => {});
     });
-
     function enableSoundOnce() {
       audio.muted = false;
-      if (audio.paused) {
-        audio.play().catch(() => {});
-      }
+      if (audio.paused) audio.play().catch(() => {});
       document.removeEventListener("click", enableSoundOnce);
     }
-
     document.addEventListener("click", enableSoundOnce);
   </script>
 
   <div class="wrapper">
     <div class="card">
       <div class="card-inner">
-        
-        <!-- avatar -->
+
         <div class="avatar">
           <img src="https://yt3.ggpht.com/FhihPZYHZ8HiPWAyfQ9Lnt-bJmO1JEQMMY39R98qO_COICIBmR0bmJTmY-rxvNL5-7FDDbmc=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Tamazawa Avatar">
         </div>
 
         <div class="name">Tamazawa</div>
-        <div class="tagline">Streamer Roblox · Valorant · Content Creator</div>
+        <div class="bio">Streamer Roblox | Valorant | Content Creator</div>
 
         <div class="divider"></div>
 
-        <!-- profile buttons -->
         <div class="game-strip">
-          <a href="https://www.roblox.com/users/6048191003/profile" class="pill-btn primary" target="_blank" rel="noopener noreferrer">
-            <span class="label">ROBLOX Profile</span>
-            <span>↗</span>
+          <a href="https://www.roblox.com/users/6048191003/profile" class="game-card" target="_blank">
+            ROBLOX Profile →
           </a>
 
-          <a href="https://tracker.gg/valorant/profile/riot/ironmeng%23zzz" class="pill-btn" target="_blank" rel="noopener noreferrer">
-            <span class="label">Valorant Stats</span>
-            <span>↗</span>
+          <a href="https://tracker.gg/valorant/profile/riot/ironmeng%23zzz" class="game-card" target="_blank">
+            Valorant Stats →
           </a>
         </div>
 
-        <!-- main links -->
         <div class="links">
-          <a href="https://saweria.co/tamazawa" class="link-btn" target="_blank" rel="noopener noreferrer">
+          <a href="https://saweria.co/tamazawa" class="link-btn" target="_blank">
             <div class="link-left">
-              <span class="link-emoji">🔥</span>
+              <span class="link-icon">🔥</span>
               <span>Saweria</span>
             </div>
             <span class="link-arrow">Support</span>
           </a>
 
-          <a href="https://sociabuzz.com/tamazawa/donate" class="link-btn" target="_blank" rel="noopener noreferrer">
+          <a href="https://sociabuzz.com/tamazawa/donate" class="link-btn" target="_blank">
             <div class="link-left">
-              <span class="link-emoji">⭐</span>
+              <span class="link-icon">⭐</span>
               <span>Sociabuzz</span>
             </div>
             <span class="link-arrow">Donate</span>
           </a>
 
-          <a href="https://www.youtube.com/@tamazawaa" class="link-btn" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.youtube.com/@tamazawaa" class="link-btn" target="_blank">
             <div class="link-left">
-              <span class="link-emoji">▶</span>
+              <span class="link-icon">▶</span>
               <span>YouTube</span>
             </div>
             <span class="link-arrow">Subscribe</span>
@@ -366,7 +297,7 @@
         </div>
 
         <div class="footer-note">
-          Made for <span>@tamazawaa</span>
+          Made for <span>@tamazawa</span>
         </div>
 
       </div>
