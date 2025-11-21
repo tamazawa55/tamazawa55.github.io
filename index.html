@@ -91,7 +91,7 @@
 
     .avatar {
       width: 86px; height: 86px; border-radius: 999px;
-      margin: 0 auto 14px;
+      margin: 0 auto 10px;
       display: flex; justify-content: center; align-items: center;
       background: radial-gradient(circle at top, #ffffff, #f97316);
       box-shadow:
@@ -227,30 +227,27 @@
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
 
-  <!-- Audio AUTOPLAY FINAL -->
+  <!-- Musik: PERSIS seperti kode awal kamu -->
+  <audio id="bg-music" autoplay loop muted preload="auto">
+    <source src="last-shot.mp3" type="audio/mp3">
+  </audio>
+
   <script>
-    const audio = new Audio("last-shot.mp3");
-    audio.loop = true;
-    audio.volume = 0.25;
+    const audio = document.getElementById("bg-music");
+    audio.volume = 0.2;
 
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    const ctx = new AudioContextClass();
-    const source = ctx.createMediaElementSource(audio);
-    source.connect(ctx.destination);
-
-    window.addEventListener("load", async () => {
-      try {
-        await ctx.resume();
-        await audio.play();
-      } catch (e) {
-        console.log("Autoplay dicegah browser, menunggu klik.");
-      }
+    // autoplay (dengan mute) seperti semula
+    window.addEventListener("load", () => {
+      audio.play().catch(() => {});
     });
 
-    document.addEventListener("click", async () => {
-      await ctx.resume();
-      await audio.play();
-    }, { once: true });
+    // klik pertama -> unmute + play (versi kamu)
+    function enableSoundOnce() {
+      audio.muted = false;
+      if (audio.paused) audio.play().catch(() => {});
+      document.removeEventListener("click", enableSoundOnce);
+    }
+    document.addEventListener("click", enableSoundOnce);
   </script>
 
   <div class="wrapper">
