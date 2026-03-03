@@ -3,17 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Tamazawa</title>
 
-  <!-- favicon -->
-  <link
-    rel="icon"
+  <link rel="icon"
     href="https://gamepedia.cursecdn.com/minecraft_gamepedia/a/a7/Heart.svg?version=dac1a46352ab4c25ad78a3cef0ceea86"
-    type="image/svg+xml"
-  >
+    type="image/svg+xml">
 
-  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,7 +23,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: url("bg-valorant.png") center/cover no-repeat fixed;
+      background: linear-gradient(135deg, #1e1b2e, #2a2438, #3a2e4f);
       color: #fff;
       cursor: pointer;
     }
@@ -36,7 +31,7 @@
     .orb {
       position: fixed;
       border-radius: 999px;
-      filter: blur(45px);
+      filter: blur(55px);
       opacity: 0.6;
       pointer-events: none;
       z-index: 1;
@@ -44,20 +39,27 @@
 
     .orb-1 {
       width: 260px; height: 260px;
-      background: #f97316;
+      background: #c084fc;
       top: -80px; left: -80px;
       animation: float1 14s infinite alternate ease-in-out;
     }
 
     .orb-2 {
       width: 230px; height: 230px;
-      background: #3b82f6;
+      background: #f9a8d4;
       bottom: -80px; right: -80px;
       animation: float2 16s infinite alternate ease-in-out;
     }
 
-    @keyframes float1 { from { transform: translate(0,0);} to {transform: translate(40px,70px);} }
-    @keyframes float2 { from { transform: translate(0,0);} to {transform: translate(-60px,-40px);} }
+    @keyframes float1 {
+      from { transform: translate(0,0);}
+      to {transform: translate(40px,70px);}
+    }
+
+    @keyframes float2 {
+      from { transform: translate(0,0);}
+      to {transform: translate(-60px,-40px);}
+    }
 
     .wrapper {
       position: relative;
@@ -68,50 +70,55 @@
     }
 
     .card {
-      background: radial-gradient(circle at top, rgba(255,255,255,0.18), rgba(10,10,10,0.92));
-      backdrop-filter: blur(20px);
+      background: radial-gradient(circle at top, rgba(255,255,255,0.15), rgba(25,20,40,0.92));
+      backdrop-filter: blur(22px);
       border-radius: 26px;
       padding: 26px 22px 24px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.9);
-      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255,255,255,0.12);
       position: relative;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: linear-gradient(135deg, rgba(255,255,255,0.16), transparent 40%, rgba(255,255,255,0.04));
-      mix-blend-mode: screen;
-      opacity: 0.7;
     }
 
     .card-inner { position: relative; z-index: 2; }
 
     .avatar {
-      width: 86px; height: 86px; border-radius: 999px;
+      width: 86px; height: 86px;
+      border-radius: 999px;
       margin: 0 auto 10px;
-      display: flex; justify-content: center; align-items: center;
-      background: radial-gradient(circle at top, #ffffff, #f97316);
-      box-shadow:
-        0 0 0 3px rgba(0,0,0,0.85),
-        0 14px 32px rgba(0,0,0,0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #c084fc, #f9a8d4);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.8);
       padding: 3px;
       overflow: hidden;
     }
 
     .avatar img {
-      width: 100%; height: 100%; border-radius: 999px; object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      object-fit: cover;
     }
 
-    .name { text-align: center; font-size: 1.4rem; font-weight: 700; }
-    .bio { text-align: center; margin-top: 6px; opacity: .85; font-size: .9rem; }
+    .name {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .bio {
+      text-align: center;
+      margin-top: 6px;
+      opacity: .85;
+      font-size: .9rem;
+    }
 
     .divider {
       margin: 18px auto 16px;
-      width: 70%; height: 1px;
-      background: radial-gradient(circle, rgba(255,255,255,0.75), transparent);
+      width: 70%;
+      height: 1px;
+      background: radial-gradient(circle, rgba(255,255,255,0.7), transparent);
     }
 
     .game-strip {
@@ -120,35 +127,11 @@
       gap: 10px;
     }
 
-    @keyframes neonPulse {
-      0% {
-        box-shadow:
-          0 0 6px rgba(248, 113, 113, 0.35),
-          0 0 14px rgba(59, 130, 246, 0.28),
-          0 0 0 0 rgba(251, 191, 36, 0.0);
-        border-color: rgba(248, 250, 252, 0.25);
-      }
-      50% {
-        box-shadow:
-          0 0 12px rgba(251, 146, 60, 0.7),
-          0 0 26px rgba(59, 130, 246, 0.6),
-          0 0 40px 2px rgba(251, 191, 36, 0.45);
-        border-color: rgba(255, 255, 255, 0.7);
-      }
-      100% {
-        box-shadow:
-          0 0 8px rgba(248, 113, 113, 0.45),
-          0 0 18px rgba(59, 130, 246, 0.45),
-          0 0 26px 1px rgba(251, 191, 36, 0.35);
-        border-color: rgba(209, 213, 219, 0.7);
-      }
-    }
-
     .game-card {
-      background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.25), rgba(15,15,15,0.9));
+      background: linear-gradient(135deg, rgba(192,132,252,0.35), rgba(249,168,212,0.25));
       padding: 11px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.3);
+      border: 1px solid rgba(255,255,255,0.3);
       color: #f9fafb;
       text-decoration: none;
       font-size: 0.82rem;
@@ -156,21 +139,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      backdrop-filter: blur(10px);
-      transition: transform 0.16s ease, opacity 0.16s ease;
-      animation: neonPulse 3s ease-in-out infinite alternate;
-    }
-
-    .game-card::after {
-      content: "↗";
-      font-size: 0.85rem;
-      opacity: 0.8;
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .game-card:hover {
-      transform: translateY(-3px) scale(1.02);
-      opacity: 1;
-      animation-duration: 1.6s;
+      transform: translateY(-3px) scale(1.03);
+      opacity: 0.95;
     }
 
     .links {
@@ -181,8 +156,8 @@
     }
 
     .link-btn {
-      background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.35), #ffffff);
-      color: #111;
+      background: linear-gradient(135deg, #c084fc, #f9a8d4);
+      color: white;
       padding: 12px 16px;
       border-radius: 999px;
       text-decoration: none;
@@ -190,19 +165,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border: 1px solid rgba(15, 23, 42, 0.4);
-      animation: neonPulse 3.2s ease-in-out infinite alternate;
-      transition: transform 0.16s ease, filter 0.16s ease;
+      transition: transform 0.2s ease, filter 0.2s ease;
     }
 
-    .link-left { display: flex; align-items: center; gap: 10px; }
-
-    .link-arrow { font-size: .85rem; opacity: .8; }
-
     .link-btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      filter: brightness(1.05);
-      animation-duration: 1.7s;
+      transform: translateY(-3px) scale(1.03);
+      filter: brightness(1.1);
     }
 
     .footer-note {
@@ -211,12 +179,16 @@
       opacity: .7;
       text-align: center;
     }
-    .footer-note span { font-weight: 600; color: #fff; opacity: .9; }
+
+    .footer-note span {
+      font-weight: 600;
+      color: #f9a8d4;
+    }
 
     @media (max-width: 480px) {
-      .wrapper { padding-inline: 14px; }
-      .card { padding-inline: 18px; }
-      .game-strip { grid-template-columns: 1fr; }
+      .game-strip {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -226,7 +198,6 @@
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
 
-  <!-- Musik: PERSIS seperti kode awal kamu -->
   <audio id="bg-music" autoplay loop muted preload="auto">
     <source src="last-shot.mp3" type="audio/mp3">
   </audio>
@@ -235,12 +206,10 @@
     const audio = document.getElementById("bg-music");
     audio.volume = 0.2;
 
-    // autoplay (dengan mute) seperti semula
     window.addEventListener("load", () => {
       audio.play().catch(() => {});
     });
 
-    // klik pertama -> unmute + play (versi kamu)
     function enableSoundOnce() {
       audio.muted = false;
       if (audio.paused) audio.play().catch(() => {});
@@ -274,32 +243,23 @@
 
         <div class="links">
           <a href="https://saweria.co/tamazawa" class="link-btn" target="_blank">
-            <div class="link-left">
-              <span>Saweria</span>
-            </div>
-            <span class="link-arrow">Support</span>
+            <span>Saweria</span>
+            <span>Support</span>
           </a>
 
           <a href="https://sociabuzz.com/tamazawa/donate" class="link-btn" target="_blank">
-            <div class="link-left">
-              <span>Sociabuzz</span>
-            </div>
-            <span class="link-arrow">Donate</span>
+            <span>Sociabuzz</span>
+            <span>Donate</span>
           </a>
 
           <a href="https://www.youtube.com/@tamazawaa" class="link-btn" target="_blank">
-            <div class="link-left">
-              <span>YouTube</span>
-            </div>
-            <span class="link-arrow">Subscribe</span>
+            <span>YouTube</span>
+            <span>Subscribe</span>
           </a>
 
-          <!-- Tiktok baru di bawah YouTube -->
           <a href="https://www.tiktok.com/@thankspull_" class="link-btn" target="_blank">
-            <div class="link-left">
-              <span>TikTok</span>
-            </div>
-            <span class="link-arrow">Follow</span>
+            <span>TikTok</span>
+            <span>Follow</span>
           </a>
         </div>
 
