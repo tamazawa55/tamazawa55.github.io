@@ -23,30 +23,30 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: linear-gradient(135deg, #1e1b2e, #2a2438, #3a2e4f);
-      color: #fff;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #262626);
+      color: #f5f5f5;
       cursor: pointer;
     }
 
     .orb {
       position: fixed;
       border-radius: 999px;
-      filter: blur(55px);
-      opacity: 0.6;
+      filter: blur(60px);
+      opacity: 0.4;
       pointer-events: none;
       z-index: 1;
     }
 
     .orb-1 {
       width: 260px; height: 260px;
-      background: #c084fc;
+      background: #444;
       top: -80px; left: -80px;
       animation: float1 14s infinite alternate ease-in-out;
     }
 
     .orb-2 {
       width: 230px; height: 230px;
-      background: #f9a8d4;
+      background: #888;
       bottom: -80px; right: -80px;
       animation: float2 16s infinite alternate ease-in-out;
     }
@@ -70,16 +70,13 @@
     }
 
     .card {
-      background: radial-gradient(circle at top, rgba(255,255,255,0.15), rgba(25,20,40,0.92));
-      backdrop-filter: blur(22px);
+      background: rgba(20,20,20,0.85);
+      backdrop-filter: blur(20px);
       border-radius: 26px;
       padding: 26px 22px 24px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-      border: 1px solid rgba(255,255,255,0.12);
-      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+      border: 1px solid rgba(255,255,255,0.08);
     }
-
-    .card-inner { position: relative; z-index: 2; }
 
     .avatar {
       width: 86px; height: 86px;
@@ -88,9 +85,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #c084fc, #f9a8d4);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+      background: linear-gradient(135deg, #fff, #aaa);
       padding: 3px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
       overflow: hidden;
     }
 
@@ -99,18 +96,20 @@
       height: 100%;
       border-radius: 999px;
       object-fit: cover;
+      filter: grayscale(100%);
     }
 
     .name {
       text-align: center;
       font-size: 1.4rem;
       font-weight: 700;
+      letter-spacing: 1px;
     }
 
     .bio {
       text-align: center;
       margin-top: 6px;
-      opacity: .85;
+      opacity: .7;
       font-size: .9rem;
     }
 
@@ -118,7 +117,7 @@
       margin: 18px auto 16px;
       width: 70%;
       height: 1px;
-      background: radial-gradient(circle, rgba(255,255,255,0.7), transparent);
+      background: linear-gradient(to right, transparent, #555, transparent);
     }
 
     .game-strip {
@@ -128,24 +127,23 @@
     }
 
     .game-card {
-      background: linear-gradient(135deg, rgba(192,132,252,0.35), rgba(249,168,212,0.25));
+      background: linear-gradient(135deg, #2b2b2b, #3a3a3a);
       padding: 11px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #f9fafb;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #f5f5f5;
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 500;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      backdrop-filter: blur(12px);
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     .game-card:hover {
-      transform: translateY(-3px) scale(1.03);
-      opacity: 0.95;
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, #444, #555);
     }
 
     .links {
@@ -156,8 +154,8 @@
     }
 
     .link-btn {
-      background: linear-gradient(135deg, #c084fc, #f9a8d4);
-      color: white;
+      background: linear-gradient(135deg, #e5e5e5, #bdbdbd);
+      color: #111;
       padding: 12px 16px;
       border-radius: 999px;
       text-decoration: none;
@@ -165,24 +163,24 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: transform 0.2s ease, filter 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     .link-btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      filter: brightness(1.1);
+      transform: translateY(-3px);
+      filter: brightness(1.05);
     }
 
     .footer-note {
       margin-top: 20px;
       font-size: 0.75rem;
-      opacity: .7;
+      opacity: .5;
       text-align: center;
     }
 
     .footer-note span {
       font-weight: 600;
-      color: #f9a8d4;
+      color: #fff;
     }
 
     @media (max-width: 480px) {
@@ -220,54 +218,52 @@
 
   <div class="wrapper">
     <div class="card">
-      <div class="card-inner">
 
-        <div class="avatar">
-          <img src="https://yt3.ggpht.com/FhihPZYHZ8HiPWAyfQ9Lnt-bJmO1JEQMMY39R98qO_COICIBmR0bmJTmY-rxvNL5-7FDDbmc=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Tamazawa Avatar">
-        </div>
-
-        <div class="name">Tamazawa</div>
-        <div class="bio">Streamer Roblox | Valorant | Content Creator</div>
-
-        <div class="divider"></div>
-
-        <div class="game-strip">
-          <a href="https://www.roblox.com/users/6048191003/profile" class="game-card" target="_blank">
-            ROBLOX Profile →
-          </a>
-
-          <a href="https://tracker.gg/valorant/profile/riot/ironmeng%23zzz" class="game-card" target="_blank">
-            Valorant Stats →
-          </a>
-        </div>
-
-        <div class="links">
-          <a href="https://saweria.co/tamazawa" class="link-btn" target="_blank">
-            <span>Saweria</span>
-            <span>Support</span>
-          </a>
-
-          <a href="https://sociabuzz.com/tamazawa/donate" class="link-btn" target="_blank">
-            <span>Sociabuzz</span>
-            <span>Donate</span>
-          </a>
-
-          <a href="https://www.youtube.com/@tamazawaa" class="link-btn" target="_blank">
-            <span>YouTube</span>
-            <span>Subscribe</span>
-          </a>
-
-          <a href="https://www.tiktok.com/@thankspull_" class="link-btn" target="_blank">
-            <span>TikTok</span>
-            <span>Follow</span>
-          </a>
-        </div>
-
-        <div class="footer-note">
-          Made for <span>@tamazawa</span>
-        </div>
-
+      <div class="avatar">
+        <img src="https://yt3.ggpht.com/FhihPZYHZ8HiPWAyfQ9Lnt-bJmO1JEQMMY39R98qO_COICIBmR0bmJTmY-rxvNL5-7FDDbmc=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Tamazawa Avatar">
       </div>
+
+      <div class="name">Tamazawa</div>
+      <div class="bio">Streamer Roblox | Valorant | Content Creator</div>
+
+      <div class="divider"></div>
+
+      <div class="game-strip">
+        <a href="https://www.roblox.com/users/6048191003/profile" class="game-card" target="_blank">
+          ROBLOX Profile →
+        </a>
+
+        <a href="https://tracker.gg/valorant/profile/riot/ironmeng%23zzz" class="game-card" target="_blank">
+          Valorant Stats →
+        </a>
+      </div>
+
+      <div class="links">
+        <a href="https://saweria.co/tamazawa" class="link-btn" target="_blank">
+          <span>Saweria</span>
+          <span>Support</span>
+        </a>
+
+        <a href="https://sociabuzz.com/tamazawa/donate" class="link-btn" target="_blank">
+          <span>Sociabuzz</span>
+          <span>Donate</span>
+        </a>
+
+        <a href="https://www.youtube.com/@tamazawaa" class="link-btn" target="_blank">
+          <span>YouTube</span>
+          <span>Subscribe</span>
+        </a>
+
+        <a href="https://www.tiktok.com/@thankspull_" class="link-btn" target="_blank">
+          <span>TikTok</span>
+          <span>Follow</span>
+        </a>
+      </div>
+
+      <div class="footer-note">
+        Made for <span>@tamazawa</span>
+      </div>
+
     </div>
   </div>
 
