@@ -1,392 +1,316 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tamazawa</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-  <link rel="icon"
-    href="https://gamepedia.cursecdn.com/minecraft_gamepedia/a/a7/Heart.svg?version=dac1a46352ab4c25ad78a3cef0ceea86"
-    type="image/svg+xml">
+  body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    color: #fff;
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    /* BACKGROUND BARU */
+    background:
+      linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
+      url("https://images5.alphacoders.com/121/1212123.jpg")
+      center/cover no-repeat fixed;
+  }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  .orb {
+    position: fixed;
+    border-radius: 999px;
+    filter: blur(50px);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .orb-1 {
+    width: 260px;
+    height: 260px;
+    background: #ff4655;
+    top: -80px;
+    left: -80px;
+    animation: float1 14s infinite alternate ease-in-out;
+  }
+
+  .orb-2 {
+    width: 230px;
+    height: 230px;
+    background: #00f0ff;
+    bottom: -80px;
+    right: -80px;
+    animation: float2 16s infinite alternate ease-in-out;
+  }
+
+  @keyframes float1 {
+    from {
+      transform: translate(0,0);
     }
+    to {
+      transform: translate(40px,70px);
+    }
+  }
 
-    body {
-      font-family: "Poppins", sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      cursor: pointer;
-      color: white;
+  @keyframes float2 {
+    from {
+      transform: translate(0,0);
+    }
+    to {
+      transform: translate(-60px,-40px);
+    }
+  }
 
-      background: linear-gradient(
+  .wrapper {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 460px;
+    padding: 24px 16px;
+  }
+
+  .card {
+    background:
+      linear-gradient(
         135deg,
-        #667eea,
-        #764ba2,
-        #ff6ec4
+        rgba(255,255,255,0.14),
+        rgba(15,15,15,0.92)
       );
 
-      background-size: 400% 400%;
-      animation: gradientMove 12s ease infinite;
+    backdrop-filter: blur(18px);
+
+    border-radius: 28px;
+    padding: 26px 22px 24px;
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+      0 20px 50px rgba(0,0,0,0.85),
+      0 0 35px rgba(255,70,85,0.18);
+
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.12),
+        transparent 40%,
+        rgba(255,255,255,0.03)
+      );
+
+    opacity: 0.8;
+  }
+
+  .card-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .avatar {
+    width: 88px;
+    height: 88px;
+
+    border-radius: 999px;
+
+    margin: 0 auto 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 3px;
+
+    background:
+      linear-gradient(
+        135deg,
+        #ff4655,
+        #00f0ff
+      );
+
+    box-shadow:
+      0 0 20px rgba(255,70,85,0.5),
+      0 0 30px rgba(0,240,255,0.3);
+
+    overflow: hidden;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 999px;
+    object-fit: cover;
+  }
+
+  .name {
+    text-align: center;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .bio {
+    text-align: center;
+    margin-top: 6px;
+    opacity: 0.85;
+    font-size: 0.9rem;
+  }
+
+  .divider {
+    margin: 18px auto 16px;
+    width: 70%;
+    height: 1px;
+
+    background:
+      linear-gradient(
+        to right,
+        transparent,
+        rgba(255,255,255,0.8),
+        transparent
+      );
+  }
+
+  .game-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  @keyframes neonPulse {
+    0% {
+      box-shadow:
+        0 0 10px rgba(255,70,85,0.25),
+        0 0 18px rgba(0,240,255,0.15);
     }
 
-    @keyframes gradientMove {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+    50% {
+      box-shadow:
+        0 0 18px rgba(255,70,85,0.65),
+        0 0 30px rgba(0,240,255,0.45);
     }
 
-    .orb {
-      position: fixed;
-      border-radius: 999px;
-      filter: blur(70px);
-      opacity: 0.45;
-      pointer-events: none;
-      z-index: 1;
+    100% {
+      box-shadow:
+        0 0 12px rgba(255,70,85,0.35),
+        0 0 22px rgba(0,240,255,0.25);
     }
+  }
 
-    .orb-1 {
-      width: 260px;
-      height: 260px;
-      background: #ff8ad8;
-      top: -80px;
-      left: -80px;
-      animation: float1 14s infinite alternate ease-in-out;
-    }
+  .game-card {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,70,85,0.22),
+        rgba(15,15,15,0.9)
+      );
 
-    .orb-2 {
-      width: 230px;
-      height: 230px;
-      background: #7aa8ff;
-      bottom: -80px;
-      right: -80px;
-      animation: float2 16s infinite alternate ease-in-out;
-    }
+    padding: 11px 14px;
 
-    @keyframes float1 {
-      from {
-        transform: translate(0,0);
-      }
-      to {
-        transform: translate(40px,70px);
-      }
-    }
+    border-radius: 999px;
 
-    @keyframes float2 {
-      from {
-        transform: translate(0,0);
-      }
-      to {
-        transform: translate(-60px,-40px);
-      }
-    }
+    border: 1px solid rgba(255,255,255,0.18);
 
+    color: #fff;
+    text-decoration: none;
+
+    font-size: 0.82rem;
+    font-weight: 500;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.18s ease;
+
+    animation: neonPulse 3s infinite alternate;
+  }
+
+  .game-card:hover {
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .link-btn {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.95),
+        rgba(255,255,255,0.82)
+      );
+
+    color: #111;
+
+    padding: 12px 16px;
+
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    transition: 0.18s ease;
+
+    animation: neonPulse 3.2s infinite alternate;
+  }
+
+  .link-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+
+    filter: brightness(1.04);
+  }
+
+  .footer-note {
+    margin-top: 20px;
+    font-size: 0.75rem;
+    opacity: 0.75;
+    text-align: center;
+  }
+
+  .footer-note span {
+    font-weight: 600;
+    color: #fff;
+  }
+
+  @media (max-width: 480px) {
     .wrapper {
-      position: relative;
-      z-index: 5;
-      width: 100%;
-      max-width: 460px;
-      padding: 24px 16px;
+      padding-inline: 14px;
     }
 
     .card {
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(22px);
-
-      border-radius: 28px;
-      padding: 28px 22px 24px;
-
-      border: 1px solid rgba(255,255,255,0.15);
-
-      box-shadow:
-        0 10px 40px rgba(0,0,0,0.25),
-        inset 0 1px 1px rgba(255,255,255,0.15);
-    }
-
-    .avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 999px;
-
-      margin: 0 auto 12px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      padding: 3px;
-
-      background: linear-gradient(
-        135deg,
-        #ffffff,
-        #ffd1f2
-      );
-
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-
-      overflow: hidden;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 999px;
-
-      filter: none;
-    }
-
-    .name {
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .bio {
-      text-align: center;
-      margin-top: 6px;
-      opacity: 0.9;
-      font-size: 0.92rem;
-    }
-
-    .divider {
-      margin: 18px auto 16px;
-      width: 70%;
-      height: 1px;
-
-      background: linear-gradient(
-        to right,
-        transparent,
-        rgba(255,255,255,0.6),
-        transparent
-      );
+      padding-inline: 18px;
     }
 
     .game-strip {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      grid-template-columns: 1fr;
     }
-
-    .game-card {
-      background: linear-gradient(
-        135deg,
-        #667eea,
-        #764ba2
-      );
-
-      padding: 12px 14px;
-      border-radius: 999px;
-
-      color: white;
-      text-decoration: none;
-
-      font-size: 0.83rem;
-      font-weight: 600;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      transition: 0.25s ease;
-
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    .game-card:hover {
-      transform: translateY(-4px) scale(1.02);
-
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    }
-
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .link-btn {
-      background: linear-gradient(
-        135deg,
-        #ff9966,
-        #ff5e62
-      );
-
-      color: white;
-      text-decoration: none;
-
-      padding: 13px 16px;
-
-      border-radius: 999px;
-
-      font-weight: 600;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      transition: 0.25s ease;
-    }
-
-    .link-btn:hover {
-      transform: translateY(-4px) scale(1.02);
-
-      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-    }
-
-    .footer-note {
-      margin-top: 20px;
-      text-align: center;
-
-      font-size: 0.78rem;
-      opacity: 0.8;
-    }
-
-    .footer-note span {
-      font-weight: 700;
-      color: #fff;
-    }
-
-    @media (max-width: 480px) {
-      .game-strip {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-
-  <audio id="bg-music" autoplay loop muted preload="auto">
-    <source src="last-shot.mp3" type="audio/mp3">
-  </audio>
-
-  <script>
-    const audio = document.getElementById("bg-music");
-    audio.volume = 0.2;
-
-    window.addEventListener("load", () => {
-      audio.play().catch(() => {});
-    });
-
-    function enableSoundOnce() {
-      audio.muted = false;
-
-      if (audio.paused) {
-        audio.play().catch(() => {});
-      }
-
-      document.removeEventListener("click", enableSoundOnce);
-    }
-
-    document.addEventListener("click", enableSoundOnce);
-  </script>
-
-  <div class="wrapper">
-    <div class="card">
-
-      <div class="avatar">
-        <img
-          src="https://yt3.ggpht.com/FhihPZYHZ8HiPWAyfQ9Lnt-bJmO1JEQMMY39R98qO_COICIBmR0bmJTmY-rxvNL5-7FDDbmc=s600-c-k-c0x00ffffff-no-rj-rp-mo"
-          alt="Tamazawa Avatar">
-      </div>
-
-      <div class="name">Tamazawa</div>
-
-      <div class="bio">
-        Streamer Roblox | Valorant | Content Creator
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="game-strip">
-
-        <a
-          href="https://www.roblox.com/users/6048191003/profile"
-          class="game-card"
-          target="_blank">
-
-          ROBLOX Profile →
-        </a>
-
-        <a
-          href="https://tracker.gg/valorant/profile/riot/ironmeng%23zzz"
-          class="game-card"
-          target="_blank">
-
-          Valorant Stats →
-        </a>
-
-      </div>
-
-      <div class="links">
-
-        <a
-          href="https://saweria.co/tamazawa"
-          class="link-btn"
-          target="_blank">
-
-          <span>Saweria</span>
-          <span>Support</span>
-        </a>
-
-        <a
-          href="https://sociabuzz.com/tamazawa/donate"
-          class="link-btn"
-          target="_blank">
-
-          <span>Sociabuzz</span>
-          <span>Donate</span>
-        </a>
-
-        <a
-          href="https://www.youtube.com/@tamazawaa"
-          class="link-btn"
-          target="_blank">
-
-          <span>YouTube</span>
-          <span>Subscribe</span>
-        </a>
-
-        <a
-          href="https://www.tiktok.com/@thankspull_"
-          class="link-btn"
-          target="_blank">
-
-          <span>TikTok</span>
-          <span>Follow</span>
-        </a>
-
-      </div>
-
-      <div class="footer-note">
-        Made for <span>@tamazawa</span>
-      </div>
-
-    </div>
-  </div>
-
-</body>
-</html>
+  }
+</style>
